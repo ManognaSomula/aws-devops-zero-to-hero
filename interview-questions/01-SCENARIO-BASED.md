@@ -115,7 +115,9 @@ stage('Deploy to ECS') {
 **Answer:** I would consider using AWS CodePipeline and AWS CodeBuild. CodePipeline integrates seamlessly with CodeBuild, allowing you to create serverless CI/CD pipelines without managing infrastructure.
 
 ### 13. **Scenario:** Your organization wants to enable single sign-on (SSO) for multiple AWS accounts. How could you achieve this while maintaining security?
-**Answer:** I would use AWS Single Sign-On (SSO) to manage user access across multiple AWS accounts. By configuring SSO integrations, users can access multiple accounts securely without needing separate credentials.
+**Answer:** AWS IAM Identity Center (previously called AWS SSO) is the best practice solution for enabling Single Sign-On across multiple AWS accounts and third-party apps.
+
+I would use AWS Single Sign-On (SSO) to manage user access across multiple AWS accounts. By configuring SSO integrations, users can access multiple accounts securely without needing separate credentials.
 
 ### 14. **Scenario:** Your company is aiming for high availability by deploying applications across multiple regions. How could you implement global traffic distribution?
 **Answer:** I would use Amazon Route 53 with Latency-Based Routing or Geolocation Routing to direct traffic to the closest or most appropriate region based on user location.
