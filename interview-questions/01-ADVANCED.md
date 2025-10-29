@@ -35,6 +35,21 @@ to update your local state file with the new resource values (without changing t
 
 ### 4. **Question:** How can you implement Infrastructure as Code (IaC) security scanning in AWS DevOps pipelines?
 **Answer:** You can use tools like AWS CloudFormation Guard, cfn-nag, or open-source security scanners to analyze IaC templates for security vulnerabilities and compliance violations. By integrating these tools into DevOps pipelines, you can ensure that infrastructure code adheres to security best practices.
+Pipeline Flow
+
+Here’s the high-level CI/CD flow with Terraform scanning:
+
+Developer → Git Push → CodePipeline (or Jenkins)
+    ↓
+[Stage 1] Terraform fmt + validate
+    ↓
+[Stage 2] Security Scan (Checkov / tfsec / Terrascan)
+    ↓
+[Stage 3] terraform plan (review)
+    ↓
+[Stage 4] Manual approval (optional)
+    ↓
+[Stage 5] terraform apply
 
 ### 5. **Question:** Explain the role of Amazon CloudWatch Events in automating DevOps workflows.
 **Answer:** Amazon CloudWatch Events allow you to respond to changes in AWS resources by triggering automated actions. In DevOps, you can use CloudWatch Events to automate CI/CD pipeline executions, scaling actions, incident response, and other tasks based on resource state changes.
