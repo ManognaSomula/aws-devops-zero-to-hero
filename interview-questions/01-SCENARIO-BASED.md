@@ -15,6 +15,7 @@
 
 ### 6. **Scenario:** You're working on a CI/CD pipeline for a containerized application. How could you ensure that every code change is automatically tested and deployed?
 **Answer:** I would set up an AWS CodePipeline that integrates with AWS CodeBuild for building and testing containers. After successful testing, I'd use AWS CodeDeploy to deploy the containers to an ECS cluster or Kubernetes on EKS.
+
 USING Jenkins:
 1.Detects new code changes (e.g., Git push / PR).
 
