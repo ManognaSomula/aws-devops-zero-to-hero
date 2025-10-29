@@ -15,6 +15,16 @@
 
 ### 6. **Scenario:** You're working on a CI/CD pipeline for a containerized application. How could you ensure that every code change is automatically tested and deployed?
 **Answer:** I would set up an AWS CodePipeline that integrates with AWS CodeBuild for building and testing containers. After successful testing, I'd use AWS CodeDeploy to deploy the containers to an ECS cluster or Kubernetes on EKS.
+USING Jenkins:
+1.Detects new code changes (e.g., Git push / PR).
+
+2.Builds and tests the code inside containers.
+
+3.Builds a Docker image.
+
+4.Pushes it to a registry (like ECR, Docker Hub, etc.).
+
+5.Deploys it automatically (to Kubernetes, ECS).
 
 ### 7. **Scenario:** Your team wants to ensure secure access to AWS resources for different team members. How could you implement this?
 **Answer:** I would use AWS Identity and Access Management (IAM) to create fine-grained policies for each team member. IAM roles and groups can be assigned permissions based on least privilege principles.
