@@ -7,6 +7,32 @@
 ### 3. **Question:** Describe the use of AWS CloudFormation Drift Detection and Remediation.
 **Answer:** AWS CloudFormation Drift Detection helps identify differences between the deployed stack and the expected stack configuration. When drift is detected, you can use CloudFormation StackSets to automatically remediate drift across multiple accounts and regions, ensuring consistent infrastructure configurations.
 
+Describe the use of Terraform Drift Detection and Remediation
+Drift happens when the actual state of your infrastructure in the cloud no longer matches what’s defined in your Terraform configuration or state file.
+Example
+Suppose your Terraform code defines:
+resource "aws_s3_bucket" "my_bucket" {
+  bucket = "my-app-bucket"
+  versioning {
+    enabled = true
+  }
+}
+But someone manually disables versioning in the AWS Console
+Custom Drift Detection in CI/CD
+You can automate drift detection using Jenkins.
+Example:
+Schedule a daily Jenkins job that runs:
+terraform plan -detailed-exitcode
+The -detailed-exitcode flag:
+Returns 0 → No changes (no drift)
+Returns 2 → Drift detected
+Returns 1 → Error
+Then:
+Notify the team via Slack/Email if drift is found.
+if it’s a one-off adjustment, use:
+terraform refresh
+to update your local state file with the new resource values (without changing the infra).
+
 ### 4. **Question:** How can you implement Infrastructure as Code (IaC) security scanning in AWS DevOps pipelines?
 **Answer:** You can use tools like AWS CloudFormation Guard, cfn-nag, or open-source security scanners to analyze IaC templates for security vulnerabilities and compliance violations. By integrating these tools into DevOps pipelines, you can ensure that infrastructure code adheres to security best practices.
 
