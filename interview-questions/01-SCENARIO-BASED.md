@@ -17,6 +17,7 @@
 **Answer:** I would set up an AWS CodePipeline that integrates with AWS CodeBuild for building and testing containers. After successful testing, I'd use AWS CodeDeploy to deploy the containers to an ECS cluster or Kubernetes on EKS.
 
 USING Jenkins:
+
 1.Detects new code changes (e.g., Git push / PR).
 
 2.Builds and tests the code inside containers.
@@ -30,18 +31,15 @@ USING Jenkins:
 Step-by-Step Setup
 1️⃣ Trigger on Code Changes
 
-Integrate Jenkins with your Git repo (GitHub, GitLab, Bitbucket, etc.).
+Jenkins periodically checks your Git repo for new commits (instead of being notified via webhook).
 
-Use a webhook so that every commit or pull request triggers a pipeline build.
+How to configure:
+In your Jenkinsfile:
 
 Example:
-
 triggers {
-    githubPush()
+    pollSCM('H/5 * * * *')
 }
-
-
-or in GitHub → Settings → Webhooks → point to your Jenkins URL /github-webhook/.
 
 2️⃣ Build and Test the Application
 
